@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissor Game</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+            url(images/paper-Scissor-rock\ game\ bckg\ img.png) no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+            padding: 5vh 2vh;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Heading Styling */
+        .Heading {
+            text-shadow: 4px 3px black;
+            font-size: 4rem;
+            color: #ffd700;
+            margin-bottom: 3vh;
+            font-weight: bold;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Image selection section */
+        .images {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 4vh 0;
+        }
+
+        .img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Button styling */
+        .img button {
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            background-color: transparent;
+            padding: 10px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .img button:hover {
+            box-shadow: 8px 8px 7px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        /* Image sizes */
+        img {
+            width: 25vh;
+            height: 25vh;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .img h2 {
+            text-shadow: 2px 1px black;
+            font-size: 1.5rem;
+            margin-top: 1vh;
+        }
+
+        /* Scoreboard panel */
+        .scorepannel {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 4vh;
+        }
+
+        .you {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .you h1 {
+            font-size: 3rem;
+            color: #ffd700;
+        }
+
+        .you h2 {
+            margin-top: 1vh;
+            font-size: 1.2rem;
+        }
+
+        /* Winner announcement */
+        .winner {
+            margin-top: 4vh;
+            padding: 1.5rem 3rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 12px;
+            font-size: 2rem;
+            animation: glow 2s infinite;
+            font-weight: bold;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px #ffd700; }
+            50% { box-shadow: 0 0 20px #ffd700; }
+            100% { box-shadow: 0 0 10px #ffd700; }
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 1200px) {
+            .Heading {
+                font-size: 3.5rem;
+            }
+
+            img {
+                width: 20vh;
+                height: 20vh;
+            }
+
+            .you h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .Heading {
+                font-size: 2.5rem;
+            }
+
+            img {
+                width: 16vh;
+                height: 16vh;
+            }
+
+            .you h1 {
+                font-size: 2rem;
+            }
+
+            .winner {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Heading {
+                font-size: 2rem;
+            }
+
+            img {
+                width: 14vh;
+                height: 14vh;
+            }
+
+            .you h1 {
+                font-size: 1.5rem;
+            }
+
+            .scorepannel {
+                flex-direction: column;
+            }
+
+            .you {
+                margin-bottom: 2vh;
+            }
+
+            .winner {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="Heading">Rock-Paper-Scissor Game</h1>
+        <div class="images">
+            <div class="img rock">
+                <button class="rock"><img src="images/rock.png" alt="Rock"></button>
+                <h2>Rock</h2>
+            </div>
+            <div class="img paper">
+                <button class="paper"><img src="images/paper.jpg" alt="Paper"></button>
+                <h2>Paper</h2>
+            </div>
+            <div class="img scissor">
+                <button class="scissor"><img src="images/Scissor.jpg" alt="Scissor"></button>
+                <h2>Scissor</h2>
+            </div>
+        </div>
+        <div class="scorepannel">
+            <div class="you">
+                <h1 id="userrscore">0</h1>
+                <h2 class="yourchoice">Your Choice</h2>
+                <h1 class="player">YOU</h1>
+            </div>
+            <div class="you">
+                <h1 id="computerscore">0</h1>
+                <h2 class="comchoice">Computer's Choice</h2>
+                <h1 class="player">COMPUTER</h1>
+            </div>
+        </div>
+        <h1 class="winner">Let's Play!</h1>
+    </div>
+    <script src="rock-paper-scissor.js"></script>
+</body>
+</html>
